@@ -118,7 +118,7 @@ function AgentListInner() {
           style={{
             padding: '10px 16px',
             borderRadius: 10,
-            background: 'linear-gradient(135deg, var(--accent), #cf7746)',
+            background: 'linear-gradient(135deg, var(--accent), #3D5A82)',
             color: '#fff',
             fontSize: 13,
             fontWeight: 700,
@@ -136,12 +136,12 @@ function AgentListInner() {
       </div>
 
       {flash && (
-        <div style={{ padding: '10px 14px', borderRadius: 8, background: 'rgba(23, 64, 59, 0.10)', border: '1px solid rgba(23, 64, 59, 0.35)', color: '#17403b', fontSize: 12 }}>
+        <div style={{ padding: '10px 14px', borderRadius: 8, background: 'rgba(23, 64, 59, 0.10)', border: '1px solid rgba(23, 64, 59, 0.35)', color: '#2F6B5E', fontSize: 12 }}>
           {flash}
         </div>
       )}
       {error && (
-        <div style={{ padding: '10px 14px', borderRadius: 8, background: 'rgba(165, 63, 43, 0.10)', border: '1px solid rgba(165, 63, 43, 0.35)', color: '#8f381f', fontSize: 12 }}>
+        <div style={{ padding: '10px 14px', borderRadius: 8, background: 'rgba(165, 63, 43, 0.10)', border: '1px solid rgba(165, 63, 43, 0.35)', color: '#0D1826', fontSize: 12 }}>
           {error}
         </div>
       )}
@@ -185,7 +185,7 @@ function AgentListInner() {
                         fontSize: 11,
                         fontWeight: 600,
                         background: agent.is_active ? 'rgba(23, 64, 59, 0.12)' : 'rgba(165, 63, 43, 0.12)',
-                        color: agent.is_active ? 'var(--pine)' : '#8f381f',
+                        color: agent.is_active ? 'var(--pine)' : '#0D1826',
                       }}
                     >
                       {agent.is_active ? 'Active' : 'Inactive'}
@@ -211,7 +211,7 @@ function AgentListInner() {
                         <button
                           title="Delete"
                           onClick={() => { setDeleteTarget(agent); setConfirmName('') }}
-                          style={{ ...iconBtnStyle, color: '#8f381f' }}
+                          style={{ ...iconBtnStyle, color: '#0D1826' }}
                         >
                           <Trash2 size={14} />
                         </button>
@@ -280,7 +280,7 @@ function AgentListInner() {
               disabled={resetPassword.length < 8 || resetting}
               style={{
                 ...modalConfirmStyle,
-                background: 'linear-gradient(135deg, var(--accent), #cf7746)',
+                background: 'linear-gradient(135deg, var(--accent), #3D5A82)',
                 opacity: resetPassword.length < 8 || resetting ? 0.5 : 1,
                 cursor: resetPassword.length < 8 || resetting ? 'not-allowed' : 'pointer',
               }}
@@ -370,7 +370,7 @@ const modalConfirmStyle: React.CSSProperties = {
   padding: '8px 14px',
   borderRadius: 8,
   border: 0,
-  background: '#8f381f',
+  background: '#0D1826',
   color: '#fff',
   fontSize: 13,
   fontWeight: 700,

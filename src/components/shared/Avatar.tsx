@@ -1,12 +1,12 @@
 import { initials } from '../../lib/format'
 
 const PALETTE: [string, string][] = [
-  ['rgba(182, 84, 51, 0.16)', '#8f381f'],   // rust
-  ['rgba(23, 64, 59, 0.14)',  '#17403b'],   // pine
-  ['rgba(109, 94, 130, 0.18)', '#473A58'],  // plum
-  ['rgba(184, 138, 58, 0.18)', '#6E5620'],  // gold
-  ['rgba(192, 123, 44, 0.18)', '#7A4D15'],  // burnt orange
-  ['rgba(61, 74, 107, 0.14)',  '#2A3555'],  // indigo-slate
+  ['rgba(182, 84, 51, 0.16)', '#0D1826'],   // rust
+  ['rgba(23, 64, 59, 0.14)',  '#2F6B5E'],   // pine
+  ['rgba(109, 94, 130, 0.18)', '#2E3A5C'],  // plum
+  ['rgba(184, 138, 58, 0.18)', '#6B4A00'],  // gold
+  ['rgba(192, 123, 44, 0.18)', '#8A5A00'],  // burnt orange
+  ['rgba(61, 74, 107, 0.14)',  '#1B2E4D'],  // indigo-slate
 ]
 
 export function Avatar({

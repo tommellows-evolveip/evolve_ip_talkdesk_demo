@@ -84,8 +84,8 @@ export default function ChangePasswordPage() {
               height: 44,
               borderRadius: 12,
               background: forced
-                ? 'linear-gradient(135deg, #C07B2C, #8f381f)'
-                : 'linear-gradient(135deg, #b65433, #8f381f)',
+                ? 'linear-gradient(135deg, #B8790B, #0D1826)'
+                : 'linear-gradient(135deg, #16263D, #0D1826)',
               display: 'grid',
               placeItems: 'center',
               color: '#fff',
@@ -167,7 +167,7 @@ export default function ChangePasswordPage() {
                 borderRadius: 8,
                 background: 'rgba(165, 63, 43, 0.10)',
                 border: '1px solid rgba(165, 63, 43, 0.35)',
-                color: '#8f381f',
+                color: '#0D1826',
                 fontSize: 12,
               }}
             >
@@ -185,7 +185,7 @@ export default function ChangePasswordPage() {
               border: 0,
               background: loading
                 ? 'var(--surface-2)'
-                : 'linear-gradient(135deg, var(--accent), #cf7746)',
+                : 'linear-gradient(135deg, var(--accent), #3D5A82)',
               color: loading ? 'var(--text-dim)' : '#fff',
               fontSize: 13,
               fontWeight: 700,

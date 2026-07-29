@@ -102,7 +102,7 @@ function NewAgentForm() {
               width: 44,
               height: 44,
               borderRadius: 12,
-              background: 'linear-gradient(135deg, var(--accent), #cf7746)',
+              background: 'linear-gradient(135deg, var(--accent), #3D5A82)',
               display: 'grid',
               placeItems: 'center',
               color: '#fff',
@@ -171,7 +171,7 @@ function NewAgentForm() {
               padding: '12px 16px',
               borderRadius: 10,
               border: 0,
-              background: loading ? 'var(--surface-2)' : 'linear-gradient(135deg, var(--accent), #cf7746)',
+              background: loading ? 'var(--surface-2)' : 'linear-gradient(135deg, var(--accent), #3D5A82)',
               color: loading ? 'var(--text-dim)' : '#fff',
               fontSize: 13,
               fontWeight: 700,
@@ -259,7 +259,7 @@ const errorStyle: React.CSSProperties = {
   borderRadius: 8,
   background: 'rgba(165, 63, 43, 0.10)',
   border: '1px solid rgba(165, 63, 43, 0.35)',
-  color: '#8f381f',
+  color: '#0D1826',
   fontSize: 12,
 }
 

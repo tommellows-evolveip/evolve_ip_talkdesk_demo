@@ -2,44 +2,44 @@
 
 :root {
   /* Marketing-site brand tokens (kept under the same names used elsewhere in the app) */
-  --bg:          #f5efe6;
-  --bg-strong:   #efe1cf;
-  --black:       #ece1ce;           /* page outer frame (warm beige, deeper than cards) */
-  --surface:     #FFFAF5;           /* paper */
-  --surface-2:   #F5E9D7;           /* deeper cream for inner tiles */
-  --surface-3:   #EEDDC0;           /* deepest cream used sparingly */
-  --border:      rgba(27, 34, 48, 0.10);
-  --border-2:    rgba(27, 34, 48, 0.18);
+  --bg:          #EEF1F5;
+  --bg-strong:   #E2E7EE;
+  --black:       #DCE2EA;           /* page outer frame (cool slate, deeper than cards) */
+  --surface:     #FFFFFF;           /* paper */
+  --surface-2:   #F4F6F9;           /* cool tile */
+  --surface-3:   #E9EDF3;           /* deepest cool tile, used sparingly */
+  --border:      rgba(22, 38, 61, 0.10);
+  --border-2:    rgba(22, 38, 61, 0.18);
 
-  --ink:         #1b2230;
-  --muted:       #5d6471;
-  --text:        #1b2230;
-  --text-dim:    #5d6471;
-  --text-muted:  #8E96A5;
+  --ink:         #16263D;
+  --muted:       #5A6B80;
+  --text:        #16263D;
+  --text-dim:    #5A6B80;
+  --text-muted:  #8B96A6;
 
   /* Semantic brand colors */
-  --accent:      #b65433;           /* rust */
-  --accent-deep: #8f381f;
-  --pine:        #17403b;
-  --pine-soft:   #dae6de;
+  --accent:      #16263D;           /* navy */
+  --accent-deep: #0D1826;
+  --pine:        #2F6B5E;
+  --pine-soft:   #dae6e3;
 
-  /* Legacy semantic names used across the app — repointed to the editorial palette */
-  --navy:        #1b2230;           /* ink (anchors brand gradients & serious surfaces) */
-  --navy-glow:   rgba(27, 34, 48, 0.14);
-  --sky:         #b65433;           /* rust — primary interactive accent */
-  --sky-glow:    rgba(182, 84, 51, 0.16);
-  --amber:       #C07B2C;           /* warm burnt-orange for "past due" */
-  --amber-glow:  rgba(192, 123, 44, 0.20);
-  --red:         #A53F2B;           /* deep rust-red for failures / open claims */
-  --red-glow:    rgba(165, 63, 43, 0.16);
-  --green:       #17403b;           /* pine — "current" / success */
-  --green-glow:  rgba(23, 64, 59, 0.16);
-  --gold:        #B88A3A;           /* warm gold for umbrella */
-  --gold-glow:   rgba(184, 138, 58, 0.20);
-  --purple:      #6d5e82;
+  /* Legacy semantic names used across the app — repointed to the Harrier palette */
+  --navy:        #16263D;           /* ink (anchors brand gradients & serious surfaces) */
+  --navy-glow:   rgba(22, 38, 61, 0.16);
+  --sky:         #16263D;           /* navy — primary interactive accent */
+  --sky-glow:    rgba(22, 38, 61, 0.16);
+  --amber:       #B8790B;           /* warm amber for "past due" */
+  --amber-glow:  rgba(184, 121, 11, 0.20);
+  --red:         #A83246;           /* crimson for failures / open claims */
+  --red-glow:    rgba(168, 50, 70, 0.16);
+  --green:       #2F6B5E;           /* navy-teal — "current" / success */
+  --green-glow:  rgba(47, 107, 94, 0.16);
+  --gold:        #D9A62A;           /* beak gold for umbrella */
+  --gold-glow:   rgba(217, 166, 42, 0.20);
+  --purple:      #4A5A80;
 
-  --shadow:      0 24px 70px rgba(42, 28, 14, 0.12);
-  --shadow-sm:   0 8px 24px rgba(42, 28, 14, 0.08);
+  --shadow:      0 24px 70px rgba(16, 24, 38, 0.12);
+  --shadow-sm:   0 8px 24px rgba(16, 24, 38, 0.08);
 
   --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
   --font-heading: "Fraunces", "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
@@ -48,20 +48,20 @@
 }
 
 @theme {
-  --color-black:      #ece1ce;
-  --color-surface:    #FFFAF5;
-  --color-surface-2:  #F5E9D7;
-  --color-border:     rgba(27, 34, 48, 0.10);
-  --color-border-2:   rgba(27, 34, 48, 0.18);
-  --color-navy:       #1b2230;
-  --color-sky:        #b65433;
-  --color-amber:      #C07B2C;
-  --color-red:        #A53F2B;
-  --color-green:      #17403b;
-  --color-gold:       #B88A3A;
-  --color-text:       #1b2230;
-  --color-text-dim:   #5d6471;
-  --color-text-muted: #8E96A5;
+  --color-black:      #DCE2EA;
+  --color-surface:    #FFFFFF;
+  --color-surface-2:  #F4F6F9;
+  --color-border:     rgba(22, 38, 61, 0.10);
+  --color-border-2:   rgba(22, 38, 61, 0.18);
+  --color-navy:       #16263D;
+  --color-sky:        #16263D;
+  --color-amber:      #B8790B;
+  --color-red:        #A83246;
+  --color-green:      #2F6B5E;
+  --color-gold:       #D9A62A;
+  --color-text:       #16263D;
+  --color-text-dim:   #5A6B80;
+  --color-text-muted: #8B96A6;
   --font-display:     "Fraunces", "Iowan Old Style", Georgia, serif;
   --font-heading:     "Fraunces", "Iowan Old Style", Georgia, serif;
   --font-body:        "Inter", "Avenir Next", "Segoe UI", system-ui, sans-serif;
@@ -79,9 +79,9 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   background:
-    radial-gradient(circle at top left, rgba(182, 84, 51, 0.18), transparent 32%),
-    radial-gradient(circle at 85% 10%, rgba(23, 64, 59, 0.10), transparent 30%),
-    linear-gradient(180deg, #f8f2ea 0%, #f1e4d3 48%, #f7f1e8 100%);
+    radial-gradient(circle at top left, rgba(22, 38, 61, 0.10), transparent 32%),
+    radial-gradient(circle at 85% 10%, rgba(217, 166, 42, 0.08), transparent 30%),
+    linear-gradient(180deg, #F7F9FC 0%, #EDF1F6 48%, #F7F9FC 100%);
   background-attachment: fixed;
 }
 
@@ -98,13 +98,13 @@ body::before {
   z-index: 0;
 }
 
-::selection { background: rgba(182, 84, 51, 0.22); color: var(--ink); }
+::selection { background: rgba(22, 38, 61, 0.22); color: var(--ink); }
 
-/* Warm-tone scrollbars */
+/* Cool-tone scrollbars */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(27, 34, 48, 0.18); border-radius: 8px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(27, 34, 48, 0.32); }
+::-webkit-scrollbar-thumb { background: rgba(22, 38, 61, 0.18); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(22, 38, 61, 0.32); }
 
 .font-display { font-family: var(--font-display); letter-spacing: -0.01em; }
 .font-heading { font-family: var(--font-heading); }
@@ -126,15 +126,15 @@ body::before {
 .divider { border-top: 1px solid var(--border); }
 
 .glow-navy  { box-shadow: 0 0 0 1px var(--border-2), 0 12px 36px var(--navy-glow); }
-.glow-red   { box-shadow: 0 0 0 1px rgba(165,63,43,0.35), 0 12px 36px var(--red-glow); }
-.glow-amber { box-shadow: 0 0 0 1px rgba(192,123,44,0.35), 0 12px 36px var(--amber-glow); }
-.glow-green { box-shadow: 0 0 0 1px rgba(23,64,59,0.25), 0 12px 36px var(--green-glow); }
+.glow-red   { box-shadow: 0 0 0 1px rgba(168,50,70,0.35), 0 12px 36px var(--red-glow); }
+.glow-amber { box-shadow: 0 0 0 1px rgba(184,121,11,0.35), 0 12px 36px var(--amber-glow); }
+.glow-green { box-shadow: 0 0 0 1px rgba(47,107,94,0.25), 0 12px 36px var(--green-glow); }
 
 /* Editorial grid overlay for hero sections */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(27, 34, 48, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(27, 34, 48, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(22, 38, 61, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 38, 61, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
   background-position: -1px -1px;
 }

@@ -121,7 +121,7 @@ export default function LoginPage() {
                 borderRadius: 8,
                 background: 'rgba(165, 63, 43, 0.10)',
                 border: '1px solid rgba(165, 63, 43, 0.35)',
-                color: '#8f381f',
+                color: '#0D1826',
                 fontSize: 12,
               }}
             >
@@ -139,7 +139,7 @@ export default function LoginPage() {
               border: 0,
               background: loading
                 ? 'var(--surface-2)'
-                : 'linear-gradient(135deg, var(--accent), #cf7746)',
+                : 'linear-gradient(135deg, var(--accent), #3D5A82)',
               color: loading ? 'var(--text-dim)' : '#fff',
               fontSize: 13,
               fontWeight: 700,

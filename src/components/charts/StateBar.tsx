@@ -37,8 +37,8 @@ export function StateBar({ data }: { data: { state: string; count: number }[] })
                   d.count === 0
                     ? 'rgba(27, 34, 48, 0.12)'
                     : d.count === max
-                      ? '#b65433' /* rust for the leading state */
-                      : '#17403b' /* pine */
+                      ? '#16263D' /* rust for the leading state */
+                      : '#2F6B5E' /* pine */
                 }
               />
             ))}

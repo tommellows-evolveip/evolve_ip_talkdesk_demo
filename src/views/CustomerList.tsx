@@ -88,7 +88,7 @@ export function CustomerList() {
               padding: '10px 16px',
               borderRadius: 10,
               border: 0,
-              background: 'linear-gradient(135deg, var(--accent), #cf7746)',
+              background: 'linear-gradient(135deg, var(--accent), #3D5A82)',
               color: '#fff',
               fontSize: 12,
               fontWeight: 700,

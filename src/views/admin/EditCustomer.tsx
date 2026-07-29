@@ -149,7 +149,7 @@ function EditCustomerInner() {
               width: 44,
               height: 44,
               borderRadius: 12,
-              background: 'linear-gradient(135deg, #5a7ea1, #34546d)',
+              background: 'linear-gradient(135deg, #4A7291, #234060)',
               display: 'grid',
               placeItems: 'center',
               color: '#fff',
@@ -186,7 +186,7 @@ function EditCustomerInner() {
                 borderRadius: 8,
                 background: 'rgba(165, 63, 43, 0.10)',
                 border: '1px solid rgba(165, 63, 43, 0.35)',
-                color: '#8f381f',
+                color: '#0D1826',
                 fontSize: 12,
               }}
             >
@@ -200,7 +200,7 @@ function EditCustomerInner() {
                 borderRadius: 8,
                 background: 'rgba(23, 64, 59, 0.10)',
                 border: '1px solid rgba(23, 64, 59, 0.35)',
-                color: '#17403b',
+                color: '#2F6B5E',
                 fontSize: 12,
               }}
             >
@@ -216,7 +216,7 @@ function EditCustomerInner() {
               padding: '12px 16px',
               borderRadius: 10,
               border: 0,
-              background: saving || !dirty ? 'var(--surface-2)' : 'linear-gradient(135deg, var(--accent), #cf7746)',
+              background: saving || !dirty ? 'var(--surface-2)' : 'linear-gradient(135deg, var(--accent), #3D5A82)',
               color: saving || !dirty ? 'var(--text-dim)' : '#fff',
               fontSize: 13,
               fontWeight: 700,

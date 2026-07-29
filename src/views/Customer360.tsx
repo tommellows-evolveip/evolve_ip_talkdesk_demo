@@ -149,7 +149,7 @@ export function Customer360() {
                 padding: '6px 10px',
                 borderRadius: 8,
                 background: failed30d.length > 0 ? 'rgba(165, 63, 43, 0.14)' : 'rgba(23, 64, 59, 0.12)',
-                color: failed30d.length > 0 ? '#8f381f' : '#17403b',
+                color: failed30d.length > 0 ? '#0D1826' : '#2F6B5E',
                 fontSize: 11,
                 fontFamily: 'var(--font-mono)',
                 fontWeight: 700,
@@ -275,7 +275,7 @@ export function Customer360() {
                       padding: '2px 6px',
                       borderRadius: 999,
                       background: 'rgba(165, 63, 43, 0.16)',
-                      color: '#8f381f',
+                      color: '#0D1826',
                       fontWeight: 700,
                     }}
                   >
@@ -393,7 +393,7 @@ function DangerZone({
               borderRadius: 10,
               border: '1px solid rgba(165, 63, 43, 0.5)',
               background: 'transparent',
-              color: '#8f381f',
+              color: '#0D1826',
               fontSize: 12,
               fontWeight: 700,
               letterSpacing: '0.06em',
@@ -427,7 +427,7 @@ function DangerZone({
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <ShieldAlert size={20} color="#8f381f" />
+                <ShieldAlert size={20} color="#0D1826" />
                 <div style={{ fontFamily: 'var(--font-heading)', fontSize: 18 }}>Delete {customerName}?</div>
               </div>
               <button
@@ -466,7 +466,7 @@ function DangerZone({
                   borderRadius: 8,
                   background: 'rgba(165, 63, 43, 0.10)',
                   border: '1px solid rgba(165, 63, 43, 0.35)',
-                  color: '#8f381f',
+                  color: '#0D1826',
                   fontSize: 12,
                 }}
               >
@@ -501,7 +501,7 @@ function DangerZone({
                   border: 0,
                   background:
                     typedName.trim() === customerName && !deleting
-                      ? 'linear-gradient(135deg, #a53f2b, #732113)'
+                      ? 'linear-gradient(135deg, #A83246, #0A1420)'
                       : 'var(--surface-2)',
                   color: typedName.trim() === customerName && !deleting ? '#fff' : 'var(--text-dim)',
                   fontSize: 12,
@@ -955,7 +955,7 @@ function BillingTab({
                 padding: '10px 16px',
                 borderRadius: 8,
                 border: '1px solid var(--accent)',
-                background: 'linear-gradient(135deg, var(--accent), #cf7746)',
+                background: 'linear-gradient(135deg, var(--accent), #3D5A82)',
                 color: '#fff',
                 fontSize: 13,
                 fontWeight: 700,

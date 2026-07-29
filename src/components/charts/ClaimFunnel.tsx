@@ -1,9 +1,9 @@
 const ORDER: { key: string; label: string; color: string }[] = [
-  { key: 'reported',            label: 'Reported',            color: '#b65433' }, // rust
-  { key: 'assigned',            label: 'Assigned',            color: '#3D4A6B' }, // indigo-slate
-  { key: 'under_investigation', label: 'Under Investigation', color: '#C07B2C' }, // burnt orange
-  { key: 'estimate_pending',    label: 'Estimate Pending',    color: '#B88A3A' }, // gold
-  { key: 'closed',              label: 'Closed',              color: '#5d6471' }, // muted slate
+  { key: 'reported',            label: 'Reported',            color: '#16263D' }, // rust
+  { key: 'assigned',            label: 'Assigned',            color: '#2C3B5C' }, // indigo-slate
+  { key: 'under_investigation', label: 'Under Investigation', color: '#B8790B' }, // burnt orange
+  { key: 'estimate_pending',    label: 'Estimate Pending',    color: '#D9A62A' }, // gold
+  { key: 'closed',              label: 'Closed',              color: '#5A6B80' }, // muted slate
 ]
 
 export function ClaimFunnel({ counts }: { counts: Record<string, number> }) {

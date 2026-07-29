@@ -2,9 +2,9 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts'
 import { fmtGBP } from '../../lib/format'
 
 const COLORS: Record<string, string> = {
-  auto: '#b65433',     // rust
-  home: '#17403b',     // pine
-  umbrella: '#B88A3A', // gold
+  auto: '#16263D',     // rust
+  home: '#2F6B5E',     // pine
+  umbrella: '#D9A62A', // gold
 }
 
 export function LobDonut({

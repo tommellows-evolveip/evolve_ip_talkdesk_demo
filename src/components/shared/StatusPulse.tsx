@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 
 type Tone = 'red' | 'amber' | 'green' | 'sky'
 const COLORS: Record<Tone, string> = {
-  red:   '#A53F2B', /* deep rust-red */
-  amber: '#C07B2C', /* burnt orange */
-  green: '#17403b', /* pine */
-  sky:   '#b65433', /* rust */
+  red:   '#A83246', /* deep rust-red */
+  amber: '#B8790B', /* burnt orange */
+  green: '#2F6B5E', /* pine */
+  sky:   '#16263D', /* rust */
 }
 
 export function StatusPulse({
