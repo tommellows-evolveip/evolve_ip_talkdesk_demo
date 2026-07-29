@@ -66,7 +66,7 @@ export default function LoginPage() {
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/harrier-logo.png" alt="Harrier Insurance" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src="/harrier-icon-transparent.png" alt="Harrier Insurance" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
           <div>
             <div

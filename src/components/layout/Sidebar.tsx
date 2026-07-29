@@ -65,8 +65,8 @@ export function Sidebar() {
         <Image
           src="/harrier-logo.png"
           alt="Harrier Insurance"
-          width={1402}
-          height={1122}
+          width={438}
+          height={438}
           priority
           style={{ width: '100%', height: 'auto', maxWidth: 168 }}
         />
