@@ -1,25 +1,25 @@
 import { format, formatDistanceToNowStrict, differenceInDays, parseISO } from 'date-fns'
 
-export const fmtUSD = (n: number | string | null | undefined, opts: Intl.NumberFormatOptions = {}) => {
+export const fmtGBP = (n: number | string | null | undefined, opts: Intl.NumberFormatOptions = {}) => {
   if (n === null || n === undefined || n === '') return '—'
   const v = typeof n === 'string' ? Number(n) : n
   if (Number.isNaN(v)) return '—'
-  return v.toLocaleString('en-US', {
+  return v.toLocaleString('en-GB', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'GBP',
     maximumFractionDigits: 0,
     ...opts,
   })
 }
 
-export const fmtUSDcents = (n: number | string | null | undefined) =>
-  fmtUSD(n, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
+export const fmtGBPpence = (n: number | string | null | undefined) =>
+  fmtGBP(n, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
 
 export const fmtInt = (n: number | string | null | undefined) => {
   if (n === null || n === undefined) return '—'
   const v = typeof n === 'string' ? Number(n) : n
   if (Number.isNaN(v)) return '—'
-  return v.toLocaleString('en-US')
+  return v.toLocaleString('en-GB')
 }
 
 export const fmtDate = (iso: string | null | undefined, pattern = 'MMM d, yyyy') => {
@@ -68,11 +68,22 @@ export const initials = (first?: string | null, last?: string | null) =>
 export const fmtPhone = (raw: string | null | undefined) => {
   if (!raw) return '—'
   const digits = raw.replace(/\D/g, '')
-  if (digits.length === 11 && digits.startsWith('1')) {
-    return `+1 (${digits.slice(1, 4)}) ${digits.slice(4, 7)}-${digits.slice(7)}`
+  // UK number stored as +44 followed by 10 digits (national number, leading 0 dropped)
+  if (digits.length === 12 && digits.startsWith('44')) {
+    const national = digits.slice(2)
+    // Mobile: 07xxx xxxxxx style -> +44 7xxx xxxxxx
+    if (national.startsWith('7')) {
+      return `+44 ${national.slice(0, 4)} ${national.slice(4)}`
+    }
+    // Landline: +44 20 xxxx xxxx (London) or +44 xxxx xxxxxx (other areas)
+    if (national.startsWith('20')) {
+      return `+44 20 ${national.slice(2, 6)} ${national.slice(6)}`
+    }
+    return `+44 ${national.slice(0, 4)} ${national.slice(4)}`
   }
-  if (digits.length === 10) {
-    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
+  // Fallback: already has a leading 0 (UK national format entered directly)
+  if (digits.length === 11 && digits.startsWith('0')) {
+    return `+44 ${digits.slice(1, 5)} ${digits.slice(5)}`
   }
   return raw
 }

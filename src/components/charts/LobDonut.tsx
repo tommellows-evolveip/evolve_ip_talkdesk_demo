@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts'
-import { fmtUSD } from '../../lib/format'
+import { fmtGBP } from '../../lib/format'
 
 const COLORS: Record<string, string> = {
   auto: '#b65433',     // rust
@@ -18,7 +18,7 @@ export function LobDonut({
       <ResponsiveContainer>
         <PieChart>
           <Tooltip
-            formatter={(value) => [fmtUSD(typeof value === 'number' ? value : Number(value ?? 0)), '']}
+            formatter={(value) => [fmtGBP(typeof value === 'number' ? value : Number(value ?? 0)), '']}
             contentStyle={{
               background: 'var(--surface)',
               border: '1px solid var(--border-2)',
@@ -63,7 +63,7 @@ export function LobDonut({
             color: 'var(--ink)',
           }}
         >
-          {fmtUSD(total)}
+          {fmtGBP(total)}
         </div>
         <div
           style={{

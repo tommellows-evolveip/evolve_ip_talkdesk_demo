@@ -17,15 +17,15 @@ export type CreatedCustomerSummary = {
   payment: { id: string; confirmation_number: string; amount: number; status: string }
 }
 
-const CITIES: Array<{ city: string; zip: string; streetPool: string[] }> = [
-  { city: 'Plano',         zip: '75024', streetPool: ['Legacy Park Dr', 'Independence Pkwy', 'Preston Rd'] },
-  { city: 'Frisco',        zip: '75034', streetPool: ['Lebanon Rd', 'Main St', 'Stonebrook Pkwy'] },
-  { city: 'Austin',        zip: '78704', streetPool: ['Barton Springs Rd', 'South Lamar Blvd', 'Travis Heights Blvd'] },
-  { city: 'Dallas',        zip: '75201', streetPool: ['Ross Ave', 'Elm St', 'McKinney Ave'] },
-  { city: 'Houston',       zip: '77019', streetPool: ['Westheimer Rd', 'Kirby Dr', 'Memorial Dr'] },
-  { city: 'San Antonio',   zip: '78205', streetPool: ['Houston St', 'Broadway St', 'Commerce St'] },
-  { city: 'Fort Worth',    zip: '76132', streetPool: ['Hulen Bend Blvd', 'Camp Bowie Blvd', 'White Settlement Rd'] },
-  { city: 'El Paso',       zip: '79912', streetPool: ['Mesa St', 'Resler Dr', 'Sunland Park Dr'] },
+const CITIES: Array<{ city: string; zip: string; region: string; streetPool: string[] }> = [
+  { city: 'Croydon',      zip: 'CR0 1LB', region: 'Greater London',      streetPool: ['George St', 'Wellesley Rd', 'Park Lane'] },
+  { city: 'Kingston upon Thames', zip: 'KT1 1EU', region: 'Greater London', streetPool: ['Clarence St', 'London Rd', 'Richmond Rd'] },
+  { city: 'Birmingham',   zip: 'B1 1AA',  region: 'West Midlands',       streetPool: ['Corporation St', 'Bristol Rd', 'Hagley Rd'] },
+  { city: 'Coventry',     zip: 'CV1 1GF', region: 'West Midlands',       streetPool: ['Foleshill Rd', 'Binley Rd', 'Kenilworth Rd'] },
+  { city: 'Manchester',   zip: 'M1 1AE',  region: 'Greater Manchester',  streetPool: ['Deansgate', 'Oxford Rd', 'Wilmslow Rd'] },
+  { city: 'Salford',      zip: 'M5 4WT',  region: 'Greater Manchester',  streetPool: ['Chapel St', 'Eccles New Rd', 'Regent Rd'] },
+  { city: 'Leeds',        zip: 'LS1 4DY', region: 'West Yorkshire',      streetPool: ['Kirkstall Rd', 'Otley Rd', 'York Rd'] },
+  { city: 'Guildford',    zip: 'GU1 3UW', region: 'Surrey',              streetPool: ['High St', 'Woodbridge Rd', 'Epsom Rd'] },
 ]
 
 const VEHICLE_POOL: Array<{ make: string; models: Array<{ model: string; trims: string[] }> }> = [
@@ -75,7 +75,7 @@ function randomDOB(): string {
 }
 
 function randomStreetNumber() {
-  return randInt(100, 9999)
+  return randInt(1, 240)
 }
 
 function randomPremium() {
@@ -118,7 +118,7 @@ function validate(input: CreateCustomerInput): string | null {
   if (!input.first_name?.trim()) return 'First name is required'
   if (!input.last_name?.trim()) return 'Last name is required'
   if (!EMAIL_RE.test(input.email)) return 'Invalid email address'
-  if (!PHONE_E164.test(input.phone)) return 'Phone must be in E.164 format (e.g. +14155551234)'
+  if (!PHONE_E164.test(input.phone)) return 'Phone must be in E.164 format (e.g. +447911123456)'
   return null
 }
 
@@ -175,7 +175,7 @@ export async function createSyntheticCustomer(input: CreateCustomerInput): Promi
 
   const cityRow = pick(CITIES)
   const street = `${randomStreetNumber()} ${pick(cityRow.streetPool)}`
-  const address = { street, city: cityRow.city, state: 'TX', zip: cityRow.zip, country: 'US' }
+  const address = { street, city: cityRow.city, state: cityRow.region, zip: cityRow.zip, country: 'UK' }
 
   const { data: customerRow, error: customerErr } = await supabaseAdmin
     .from('customers')
@@ -254,7 +254,7 @@ export async function createSyntheticCustomer(input: CreateCustomerInput): Promi
         last_name,
         date_of_birth: dob,
         license_number,
-        license_state: 'TX',
+        license_state: cityRow.region,
         relationship: 'self',
         is_primary_named_insured: true,
         primary_vehicle_id: vehicleRow.id,

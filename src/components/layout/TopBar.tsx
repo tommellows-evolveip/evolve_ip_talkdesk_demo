@@ -59,7 +59,7 @@ export function TopBar() {
     router.refresh()
   }
 
-  const title = id ? 'Customer 360' : TITLES[pathname] ?? 'Crestline Core'
+  const title = id ? 'Customer 360' : TITLES[pathname] ?? 'Harrier Core'
 
   return (
     <header

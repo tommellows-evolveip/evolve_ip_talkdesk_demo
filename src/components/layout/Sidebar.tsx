@@ -63,8 +63,8 @@ export function Sidebar() {
         }}
       >
         <Image
-          src="/crestline-logo.png"
-          alt="Crestline Insurance"
+          src="/harrier-logo.png"
+          alt="Harrier Insurance"
           width={1402}
           height={1122}
           priority

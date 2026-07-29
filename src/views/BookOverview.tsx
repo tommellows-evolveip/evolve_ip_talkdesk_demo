@@ -18,9 +18,9 @@ import { Avatar } from '../components/shared/Avatar'
 import { LobDonut } from '../components/charts/LobDonut'
 import { StateBar } from '../components/charts/StateBar'
 import { ClaimFunnel } from '../components/charts/ClaimFunnel'
-import { fmtUSD, fmtRel, daysBetween } from '../lib/format'
+import { fmtGBP, fmtRel, daysBetween } from '../lib/format'
 
-const CRESTLINE_STATES = ['TX', 'CO', 'FL', 'WA', 'AZ']
+const HARRIER_REGIONS = ['Greater London', 'West Midlands', 'Greater Manchester', 'West Yorkshire', 'Surrey']
 const CLOSED_LIKE = new Set(['closed', 'denied'])
 
 export function BookOverview() {
@@ -76,12 +76,12 @@ export function BookOverview() {
       byCustomer[c.cid] = c.mailing_address?.state
     })
     const counts: Record<string, number> = {}
-    CRESTLINE_STATES.forEach((s) => (counts[s] = 0))
+    HARRIER_REGIONS.forEach((s) => (counts[s] = 0))
     policies.forEach((p) => {
       const st = p.dwelling_address?.state ?? byCustomer[p.customer_id]
       if (st && counts[st] !== undefined) counts[st] += 1
     })
-    return CRESTLINE_STATES.map((s) => ({ state: s, count: counts[s] ?? 0 }))
+    return HARRIER_REGIONS.map((s) => ({ state: s, count: counts[s] ?? 0 }))
   }, [policies, customers])
 
   const claimCounts = useMemo(() => {
@@ -111,7 +111,7 @@ export function BookOverview() {
         <KpiCard
           label="Written Premium"
           value={Math.round(writtenPremium)}
-          prefix="$"
+          prefix="£"
           color="navy"
           icon={<Wallet size={18} />}
           hint={`Across ${activePolicies.length} active policies`}
@@ -131,7 +131,7 @@ export function BookOverview() {
           value={pastDue.length}
           color="amber"
           icon={<ShieldAlert size={18} />}
-          hint={`${fmtUSD(pastDue.reduce((a, b) => a + Number(b.balance), 0))} delinquent`}
+          hint={`${fmtGBP(pastDue.reduce((a, b) => a + Number(b.balance), 0))} delinquent`}
           loading={loading}
           pulse={pastDue.length > 0}
         />
@@ -146,7 +146,7 @@ export function BookOverview() {
             {premiumByLob.map((d) => (
               <div key={d.name} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12 }}>
                 <Badge variant={d.name as 'auto' | 'home' | 'umbrella'} size="xs" />
-                <span style={{ color: 'var(--text-dim)' }}>{fmtUSD(d.value)}</span>
+                <span style={{ color: 'var(--text-dim)' }}>{fmtGBP(d.value)}</span>
               </div>
             ))}
           </div>
@@ -262,7 +262,7 @@ export function BookOverview() {
                       </div>
                     </div>
                     <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, color: 'var(--amber)' }}>
-                      {fmtUSD(b.balance)}
+                      {fmtGBP(b.balance)}
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-dim)', fontSize: 11 }}>
                       <span>{overdue > 0 ? `${overdue}d late` : 'due today'}</span>

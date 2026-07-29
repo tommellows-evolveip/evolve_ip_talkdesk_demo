@@ -2,15 +2,16 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import { Search, ArrowRight, Phone, Mail, AlertTriangle, UserPlus } from 'lucide-react'
+import { Search, ArrowRight, Phone, Mail, AlertTriangle, UserPlus, ChevronLeft, ChevronRight } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import type { Customer, Policy, Claim, BillingAccount } from '../lib/types'
 import { Badge } from '../components/shared/Badge'
 import { Avatar } from '../components/shared/Avatar'
-import { fmtUSD, fmtPhone } from '../lib/format'
+import { fmtGBP, fmtPhone } from '../lib/format'
 import { useSessionAgent } from '../hooks/useSessionAgent'
 
-const STATES = ['TX', 'CO', 'FL', 'WA', 'AZ']
+const STATES = ['Greater London', 'West Midlands', 'Greater Manchester', 'West Yorkshire', 'Surrey']
+const PAGE_SIZE = 25
 
 type Row = Customer & {
   policies: Pick<Policy, 'id' | 'type' | 'status'>[]
@@ -25,6 +26,7 @@ export function CustomerList() {
   const [state, setState] = useState<string>('ALL')
   const [onlyDelinquent, setOnlyDelinquent] = useState(false)
   const [onlyClaims, setOnlyClaims] = useState(false)
+  const [page, setPage] = useState(0)
   const { isAdmin } = useSessionAgent()
 
   useEffect(() => {
@@ -61,6 +63,17 @@ export function CustomerList() {
       return true
     })
   }, [rows, query, state, onlyDelinquent, onlyClaims])
+
+  // Reset to the first page whenever the filtered result set changes.
+  useEffect(() => {
+    setPage(0)
+  }, [query, state, onlyDelinquent, onlyClaims])
+
+  const total = filtered.length
+  const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE))
+  const currentPage = Math.min(page, pageCount - 1)
+  const pageStart = currentPage * PAGE_SIZE
+  const paged = filtered.slice(pageStart, pageStart + PAGE_SIZE)
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -166,7 +179,7 @@ export function CustomerList() {
           <div>Claims</div>
           <div />
         </div>
-        {filtered.map((r) => {
+        {paged.map((r) => {
           const policyTypes = Array.from(new Set(r.policies?.map((p) => p.type) ?? []))
           const worstBilling = r.billing_accounts?.find((b) => b.status === 'past_due')
             ?? r.billing_accounts?.find((b) => b.status === 'payment_pending')
@@ -227,7 +240,7 @@ export function CustomerList() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                     <Badge variant={worstBilling.status} size="xs" />
                     <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-dim)' }}>
-                      {fmtUSD(worstBilling.balance)}
+                      {fmtGBP(worstBilling.balance)}
                     </span>
                   </div>
                 ) : (
@@ -255,8 +268,60 @@ export function CustomerList() {
         {loading && (
           <div style={{ padding: 40, textAlign: 'center', color: 'var(--text-dim)' }}>Loading…</div>
         )}
+        {!loading && total > 0 && (
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '12px 16px',
+              borderTop: '1px solid var(--border)',
+              fontSize: 12,
+              color: 'var(--text-dim)',
+            }}
+          >
+            <span>
+              Showing {pageStart + 1}–{Math.min(pageStart + PAGE_SIZE, total)} of {total}
+            </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <PageButton disabled={currentPage === 0} onClick={() => setPage((p) => Math.max(0, p - 1))}>
+                <ChevronLeft size={14} /> Prev
+              </PageButton>
+              <span style={{ minWidth: 90, textAlign: 'center' }}>
+                Page {currentPage + 1} of {pageCount}
+              </span>
+              <PageButton disabled={currentPage >= pageCount - 1} onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}>
+                Next <ChevronRight size={14} />
+              </PageButton>
+            </div>
+          </div>
+        )}
       </div>
     </div>
+  )
+}
+
+function PageButton({ disabled, onClick, children }: { disabled: boolean; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 4,
+        padding: '6px 12px',
+        borderRadius: 8,
+        border: '1px solid var(--border-2)',
+        background: 'var(--surface-2)',
+        color: disabled ? 'var(--text-muted)' : 'var(--text-dim)',
+        fontSize: 12,
+        cursor: disabled ? 'default' : 'pointer',
+        opacity: disabled ? 0.5 : 1,
+      }}
+    >
+      {children}
+    </button>
   )
 }
 

@@ -8,7 +8,7 @@ import type { Quote } from '../lib/types'
 import { EmptyState } from '../components/shared/EmptyState'
 import { SectionHeader } from '../components/shared/SectionHeader'
 import { Badge } from '../components/shared/Badge'
-import { fmtUSD, fmtDate } from '../lib/format'
+import { fmtGBP, fmtDate } from '../lib/format'
 
 const WIZARD_STEPS = [
   { key: 'applicant', label: 'Applicant', icon: User, description: 'Primary insured, household, prior carrier' },
@@ -62,7 +62,7 @@ export function Quotes() {
               Start a quote
             </div>
             <div style={{ fontSize: 13, color: 'var(--text-dim)', maxWidth: 520, marginTop: 8 }}>
-              Bind a Crestline Auto, Home, or Umbrella policy in four steps. CSRs can begin on behalf of
+              Bind a Harrier Auto, Home, or Umbrella policy in four steps. CSRs can begin on behalf of
               a caller or attach an in-flight quote to an existing customer.
             </div>
           </div>
@@ -166,7 +166,7 @@ export function Quotes() {
                 <div style={{ fontFamily: 'var(--font-mono)' }}>{q.reference_number}</div>
                 <div>{q.contact_name ?? '—'}</div>
                 <div><Badge variant={q.status ?? 'neutral'} size="xs">{(q.status ?? '—').toUpperCase()}</Badge></div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: 22 }}>{fmtUSD(q.estimated_premium)}</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 22 }}>{fmtGBP(q.estimated_premium)}</div>
                 <div style={{ fontSize: 11, color: 'var(--text-dim)', textAlign: 'right' }}>
                   expires {fmtDate(q.expires_at)}
                 </div>

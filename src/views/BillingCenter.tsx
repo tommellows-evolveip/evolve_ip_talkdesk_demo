@@ -7,7 +7,7 @@ import { supabase } from '../lib/supabase'
 import type { BillingAccount, Customer, Payment } from '../lib/types'
 import { Badge } from '../components/shared/Badge'
 import { KpiCard } from '../components/shared/KpiCard'
-import { fmtUSD, fmtDate, daysBetween } from '../lib/format'
+import { fmtGBP, fmtDate, daysBetween } from '../lib/format'
 
 type Row = BillingAccount & {
   customer?: Pick<Customer, 'cid' | 'first_name' | 'last_name' | 'mailing_address'> | null
@@ -65,11 +65,11 @@ export function BillingCenter() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 14 }}>
-        <KpiCard label="AR Outstanding" value={Math.round(arOutstanding)} prefix="$" color="sky" loading={loading} />
+        <KpiCard label="AR Outstanding" value={Math.round(arOutstanding)} prefix="£" color="sky" loading={loading} />
         <KpiCard
           label="Past-Due Balance"
           value={Math.round(pastDueBalance)}
-          prefix="$"
+          prefix="£"
           color="amber"
           pulse={pastDueBalance > 0}
           loading={loading}
@@ -179,7 +179,7 @@ export function BillingCenter() {
                   {r.customer?.mailing_address?.state ? `, ${r.customer.mailing_address.state}` : ''}
                 </div>
               </div>
-              <div style={{ fontFamily: 'var(--font-mono)' }}>{fmtUSD(r.balance)}</div>
+              <div style={{ fontFamily: 'var(--font-mono)' }}>{fmtGBP(r.balance)}</div>
               <div>
                 <Badge variant={r.status} size="xs" />
                 {late > 0 && (

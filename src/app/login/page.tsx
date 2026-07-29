@@ -81,7 +81,7 @@ export default function LoginPage() {
                 color: 'var(--ink)',
               }}
             >
-              Crestline
+              Harrier
             </div>
             <div
               style={{
@@ -176,7 +176,7 @@ export default function LoginPage() {
             textAlign: 'center',
           }}
         >
-          Authorized Crestline staff only. Access is logged.
+          Authorized Harrier staff only. Access is logged.
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { AppShell } from '@/components/layout/AppShell'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Crestline Core — CSR Workbench',
+  title: 'Harrier Core — CSR Workbench',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

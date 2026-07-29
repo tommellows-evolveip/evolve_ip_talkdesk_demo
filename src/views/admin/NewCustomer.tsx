@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { UserPlus, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react'
 import { AdminGate } from './AdminGate'
 import { Badge } from '../../components/shared/Badge'
-import { fmtUSD } from '../../lib/format'
+import { fmtGBP } from '../../lib/format'
 
 type Summary = {
   customer: { cid: string; first_name: string; last_name: string; email: string; phone: string; city: string }
@@ -118,12 +118,12 @@ function NewCustomerForm() {
             Generated data
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
-            <KV label="Policy" value={`${summary.policy.policy_number} · ${fmtUSD(summary.policy.premium_amount)}/yr`} />
+            <KV label="Policy" value={`${summary.policy.policy_number} · ${fmtGBP(summary.policy.premium_amount)}/yr`} />
             <KV label="Vehicle" value={`${summary.vehicle.year} ${summary.vehicle.make} ${summary.vehicle.model}`} extra={<Badge variant={summary.vehicle.ownership} size="xs" />} />
             <KV label="Driver DOB" value={summary.driver.date_of_birth} extra={<span style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-dim)' }}>TX {summary.driver.license_number}</span>} />
             <KV
               label="Billing"
-              value={`${fmtUSD(summary.billing.balance)} · ${summary.billing.payment_frequency}`}
+              value={`${fmtGBP(summary.billing.balance)} · ${summary.billing.payment_frequency}`}
               extra={<Badge variant={summary.billing.status} size="xs" />}
             />
             <KV
@@ -235,7 +235,7 @@ function NewCustomerForm() {
             value={phone}
             onChange={setPhone}
             required
-            placeholder="+14155551234"
+            placeholder="+447911123456"
             hint="Include country code with +. 8–15 digits."
           />
 

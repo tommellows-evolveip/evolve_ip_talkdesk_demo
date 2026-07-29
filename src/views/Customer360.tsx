@@ -34,7 +34,7 @@ import { JsonAddress } from '../components/shared/JsonAddress'
 import { EmptyState } from '../components/shared/EmptyState'
 import { SectionHeader } from '../components/shared/SectionHeader'
 import { StatusPulse } from '../components/shared/StatusPulse'
-import { fmtUSD, fmtUSDcents, fmtDate, fmtRel, fmtPhone, daysUntil, daysBetween } from '../lib/format'
+import { fmtGBP, fmtGBPpence, fmtDate, fmtRel, fmtPhone, daysUntil, daysBetween } from '../lib/format'
 import type { Policy } from '../lib/types'
 
 type TabKey = 'policies' | 'claims' | 'billing' | 'quotes'
@@ -118,7 +118,7 @@ export function Customer360() {
             <GlanceTile label="Policies" value={data.policies.length} color="sky" />
             <GlanceTile
               label="Balance"
-              value={fmtUSD(data.billingAccount?.balance ?? 0)}
+              value={fmtGBP(data.billingAccount?.balance ?? 0)}
               color={data.billingAccount?.status === 'past_due' ? 'amber' : 'green'}
               small
             />
@@ -581,7 +581,7 @@ function BillingMini({ account }: { account: import('../lib/types').BillingAccou
       <SectionHeader eyebrow="BillingCenter" title="Current Balance" />
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
         <div style={{ fontFamily: 'var(--font-display)', fontSize: 46, lineHeight: 1, color: pastDue ? 'var(--amber)' : 'var(--text)' }}>
-          {fmtUSD(account.balance)}
+          {fmtGBP(account.balance)}
         </div>
         <Badge variant={account.status} size="xs" />
       </div>
@@ -698,7 +698,7 @@ function PolicyCard({
         </div>
         <div style={{ textAlign: 'right' }}>
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 30, lineHeight: 1 }}>
-            {fmtUSD(policy.premium_amount)}
+            {fmtGBP(policy.premium_amount)}
           </div>
           <div style={{ fontSize: 10, color: 'var(--text-dim)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
             Annual premium
@@ -930,7 +930,7 @@ function BillingTab({
       <div className="card" style={{ padding: 18 }}>
         <SectionHeader eyebrow="Summary" title="Account" />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14 }}>
-          <KV label="Balance" value={fmtUSD(account.balance)} />
+          <KV label="Balance" value={fmtGBP(account.balance)} />
           <KV label="Status" value={<Badge variant={account.status} size="xs" />} />
           <KV label="Cadence" value={account.payment_frequency ?? '—'} />
           <KV label="Next due" value={fmtDate(account.due_date)} />
@@ -946,7 +946,7 @@ function BillingTab({
                 Payment failed · {failed.length} attempt{failed.length > 1 ? 's' : ''}
               </div>
               <div style={{ fontSize: 12, color: 'var(--text-dim)', marginTop: 4 }}>
-                Most recent {fmtRel(failed[0].created_at)} · {fmtUSDcents(failed[0].amount)}. Retry with the default
+                Most recent {fmtRel(failed[0].created_at)} · {fmtGBPpence(failed[0].amount)}. Retry with the default
                 method on file to bring the account current.
               </div>
             </div>
@@ -1041,7 +1041,7 @@ function BillingTab({
                 }}
               >
                 <div>{fmtDate(p.created_at)}</div>
-                <div style={{ fontFamily: 'var(--font-mono)' }}>{fmtUSDcents(p.amount)}</div>
+                <div style={{ fontFamily: 'var(--font-mono)' }}>{fmtGBPpence(p.amount)}</div>
                 <div><Badge variant={p.status} size="xs" /></div>
                 <div style={{ color: 'var(--text-dim)' }}>
                   {pm ? `${pm.brand ?? pm.type} ·${pm.last_four}` : '—'}
@@ -1103,7 +1103,7 @@ function QuotesActivityTab({
                     {q.coverage_level} · expires {fmtDate(q.expires_at)}
                   </div>
                 </div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: 22 }}>{fmtUSD(q.estimated_premium)}</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 22 }}>{fmtGBP(q.estimated_premium)}</div>
               </div>
             ))}
           </div>

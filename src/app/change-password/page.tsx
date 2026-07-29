@@ -116,7 +116,7 @@ export default function ChangePasswordPage() {
                 marginTop: 4,
               }}
             >
-              Crestline · CSR Workbench
+              Harrier · CSR Workbench
             </div>
           </div>
         </div>

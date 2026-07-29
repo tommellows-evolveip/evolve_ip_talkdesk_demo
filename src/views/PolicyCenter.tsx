@@ -6,7 +6,7 @@ import { Search, ArrowRight } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import type { Policy, Customer } from '../lib/types'
 import { Badge } from '../components/shared/Badge'
-import { fmtUSD, fmtDate, daysUntil } from '../lib/format'
+import { fmtGBP, fmtDate, daysUntil } from '../lib/format'
 
 type Row = Policy & {
   customer?: Pick<Customer, 'cid' | 'first_name' | 'last_name' | 'mailing_address'> | null
@@ -101,7 +101,7 @@ export function PolicyCenter() {
 
       <div className="card" style={{ padding: 14, display: 'flex', gap: 30 }}>
         <Stat label="In Filter" value={filtered.length} />
-        <Stat label="Total Premium" value={fmtUSD(totalPremium)} />
+        <Stat label="Total Premium" value={fmtGBP(totalPremium)} />
         <Stat label="Renewals ≤ 45d" value={rows.filter((r) => daysUntil(r.expiration_date) <= 45 && r.status === 'active').length} />
       </div>
 
@@ -143,7 +143,7 @@ export function PolicyCenter() {
                   {days}d
                 </span>
               </div>
-              <div style={{ fontFamily: 'var(--font-mono)', textAlign: 'right' }}>{fmtUSD(r.premium_amount)}</div>
+              <div style={{ fontFamily: 'var(--font-mono)', textAlign: 'right' }}>{fmtGBP(r.premium_amount)}</div>
               <div style={{ textAlign: 'right', color: 'var(--text-dim)' }}><ArrowRight size={14} /></div>
             </Link>
           )

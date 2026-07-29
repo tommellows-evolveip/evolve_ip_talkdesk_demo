@@ -3,7 +3,7 @@ import type { SessionAgent } from './agent-types'
 
 const SECRET = new TextEncoder().encode(process.env.JWT_SECRET ?? '')
 
-export const SESSION_COOKIE = 'crestline_session'
+export const SESSION_COOKIE = 'harrier_session'
 export const SESSION_MAX_AGE_SECONDS = 24 * 60 * 60
 
 export async function signSession(agent: SessionAgent): Promise<string> {
