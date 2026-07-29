@@ -59,17 +59,14 @@ export default function LoginPage() {
               width: 44,
               height: 44,
               borderRadius: 12,
-              background: 'linear-gradient(135deg, #b65433, #8f381f)',
+              overflow: 'hidden',
               display: 'grid',
               placeItems: 'center',
-              fontFamily: 'var(--font-display)',
-              color: '#fff',
-              fontSize: 26,
-              fontWeight: 500,
-              boxShadow: '0 10px 22px rgba(182, 84, 51, 0.32)',
+              boxShadow: '0 10px 22px rgba(22, 38, 61, 0.32)',
             }}
           >
-            C
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/harrier-logo.png" alt="Harrier Insurance" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
           <div>
             <div
